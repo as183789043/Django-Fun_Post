@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} 我有話說 {% endblock %}
+{% block content %}
+<div class="container">
+<div class="col-md-12 mt-2">
+    <div class="card">
+        <div class="card-header center">
+            <h3>~~職場甘苦談~~</h3>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for p in posts %}
+        <div class="col-sm-12 col-md-6 pt-1">
+            <div class="card {% cycle 'text-white bg-primary' 'bg-info' 'bg-warning' 'bg-success'  %}">
+                <div class="card-header ">[ {{ p.nickname }} ]覺得{{ p.mood }}</div>
+                <div class="card-body">
+                    {{ p.message | linebreaks}}
+                </div>
+                <div class="card-footer price_right ">
+                    <i><small>{{p.pub_time}}<span class="material-symbols-outlined" style="vertical-align: top; margin-left: 3px;" onclick="go_delete('{{p.id}}')">
+                        delete
+                        </span></small></i>
+                </div>
+            </div>
+        </div>
+        {% empty%}
+        目前沒有任何心情留言
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
