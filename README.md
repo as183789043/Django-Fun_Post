@@ -5,7 +5,7 @@
 
 
 
-## Simple Captcha
+## ModelForm and Simple Captcha
 ![image](https://github.com/as183789043/Django-Fun_Post/assets/56618553/381a5e69-a616-4e41-9774-7515dce825cc)
 
 
