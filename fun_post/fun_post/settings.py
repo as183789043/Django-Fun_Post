@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mysite',
-    'captcha'   #加入後需要migrate
+    'captcha',   #加入後需要migrate
+    'django_recaptcha'
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,7 @@ EMAIL_PORT = 587  #TLS通訊埠號
 EMAIL_USE_TLS = True  #開啟TLS(傳輸層安全性)
 EMAIL_HOST_USER = 'rickhsu1999@gmail.com'  #寄件者電子郵件
 EMAIL_HOST_PASSWORD = 'lkagzdpgjlzsdbzd'  #Gmail應用程式的密碼
+
+## Google recaptcha
+RECAPTCHA_PUBLIC_KEY = '6Lfb_6cpAAAAANbTiHjVTreGWQf5IdKuvH78uXy4'
+RECAPTCHA_PRIVATE_KEY = '6Lfb_6cpAAAAACnjTNoVG0LFXXyCejpgKaAUejng'

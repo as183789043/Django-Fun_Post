@@ -97,8 +97,8 @@ def post2db(request):
         post_form = forms.PostForm(request.POST)
         if post_form.is_valid():
             message = '您的訊息以儲存，要等管理者啟用才可以看的到喔。'
-            post.form.save()
-            return redirect('list/')
+            post_form.save()
+            return redirect('/list/')
         else:
             message = '如要張貼訊息，則每一個欄位都要填寫...'
     else:
