@@ -1,4 +1,31 @@
 
+## Quick Start 
+
+### Prerequire
+- docker
+- docker compose
+
+
+### Clone file
+```
+git clone https://github.com/as183789043/Django-Fun_Post.git
+cd Django-Fun_Post
+pip install -r  requirements.txt
+```
+### Docker start MongoDB(Use for BMI Page )
+```
+cd Docker-Compose-Qucik-Build
+cd mogo_and_express
+docker compose up -d   # UI port 8081
+```
+### Start Django
+```
+cd fun_post
+python manage.py runserver  # URL: 127.0.0.1:8000
+```
+---
+## Landing Page
+![image](https://github.com/as183789043/Django-Fun_Post/assets/56618553/1c9baec6-628d-4133-847d-db8304a0a8bd)
 
 ## List Post  (Cycle color )
 ![image](https://github.com/as183789043/Django-Fun_Post/assets/56618553/17325555-eefc-4488-aba1-cfcac2574854)
