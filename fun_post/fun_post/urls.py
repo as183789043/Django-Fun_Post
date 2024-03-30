@@ -29,6 +29,8 @@ urlpatterns = [
     path('post/', views.posting),
     path('contract/', views.contract),
     path('post2db/', views.post2db),
-    path('captcha/',include('captcha.urls'))
+    path('captcha/',include('captcha.urls')),
+    path('bmi/',views.bmi),
+    path('delbodyinfo/<str:name>',views.delbodyinfo)
 ] + static(settings.MEDIA_URL ,document_root=settings.MEDIA_ROOT)
 

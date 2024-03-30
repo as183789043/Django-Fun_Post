@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} BMI列表 {% endblock %}
+{% block content %}
+
+
+<div class="center mx-3 px-3">
+
+
+    <table class="table table-striped text_left">
+        <tr>
+            <td>姓名</td>
+            <td>身高</td>
+            <td>體重</td>
+            <td>BMI列表</td>
+            <td>管理</td>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.name}}</td>
+            <td>{{ item.height}}</td>
+            <td>{{ item.weight}}</td>
+            <td>{{ item.bmi}}</td>
+            <td><a class="btn btn-sm btn-outline-warning" href="/delbodyinfo/{{item.name}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+
+<div class="mx-3 px-3">
+    <form action="/bmi/" method="post" name="my_form" style="display: block">
+        {% csrf_token %}
+        <table class="text_left">
+            <tr>
+                <td>姓名:</td>
+                <td> <input type="text" name="name" size="10" required></td>
+            </tr>
+            <tr>
+                <td>身高:</td>
+                <td> <input type="text" name="height" size="3" required></td>
+            </tr>
+            <tr>
+                <td>體重:</td>
+                <td> <input type="text" name="weight" size="3" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="張貼" />
+                    <input type="reset" value="清除重填" />
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+{% endblock %}
+

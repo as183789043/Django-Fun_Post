@@ -11,9 +11,21 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+#load env file
+import os
+from dotenv import load_dotenv
+
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# setting env file path and read
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -130,14 +142,22 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# store secret in .env 
 #Google Email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  #SMTP伺服器
-EMAIL_PORT = 587  #TLS通訊埠號
-EMAIL_USE_TLS = True  #開啟TLS(傳輸層安全性)
-EMAIL_HOST_USER = 'rickhsu1999@gmail.com'  #寄件者電子郵件
-EMAIL_HOST_PASSWORD = 'lkagzdpgjlzsdbzd'  #Gmail應用程式的密碼
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')  #SMTP伺服器
+EMAIL_PORT = os.getenv('EMAIL_PORT')  #TLS通訊埠號
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')  #開啟TLS(傳輸層安全性)
+EMAIL_HOST_USER =  os.getenv('EMAIL_HOST_USER') #寄件者電子郵件
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  #Gmail應用程式的密碼
 
 ## Google recaptcha
-RECAPTCHA_PUBLIC_KEY = '6Lfb_6cpAAAAANbTiHjVTreGWQf5IdKuvH78uXy4'
-RECAPTCHA_PRIVATE_KEY = '6Lfb_6cpAAAAACnjTNoVG0LFXXyCejpgKaAUejng'
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+
+## MongoDB_setting
+MongoDB_User = os.getenv('MongoDB_User')
+MongoDB_password = os.getenv('MongoDB_password')
+MongoDB_host = os.getenv('MongoDB_host')
+MongoDB_port = os.getenv('MongoDB_port')
+MongoDB_db = os.getenv('MongoDB_db')

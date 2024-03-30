@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from mysite import models,forms
 from django.core.mail import EmailMessage
+import os 
+import pymongo
+
 # Create your views here.
 
 def index(request):
@@ -106,3 +109,41 @@ def post2db(request):
         message = '如要張貼訊息，則每一個欄位都要填寫...'
 
     return render(request,"post2db.html",locals())
+
+def bmi(request):
+    client = pymongo.MongoClient(f"mongodb://{os.getenv('MongoDB_User')}:{os.getenv('MongoDB_password')}@{os.getenv('MongoDB_host')}:{os.getenv('MongoDB_port')}/")
+    collectioms = client[os.getenv('MongoDB_db')]['bodyinfo']
+
+    if request.method =="POST":
+        name = request.POST.get("name").strip()
+        height = request.POST.get("height").strip()
+        weight = request.POST.get("weight").strip()
+        collectioms.insert_one({
+            "name":name,
+            "height":height,
+            "weight":weight
+        })
+        return redirect("/bmi/")
+
+    else:
+        records = collectioms.find()
+        data = list()
+        for rec in records:
+            t = dict()
+            t['name'] = rec['name']
+            t['height'] = rec['height']
+            t['weight'] = rec['weight']
+            t['bmi'] = round(float(t['weight']) / (int(t['height'])/100)**2,2 )
+            
+            data.append(t)
+    return render(request,"bmi.html",locals())
+
+def delbodyinfo(request,name=None):
+    client = pymongo.MongoClient(f"mongodb://{os.getenv('MongoDB_User')}:{os.getenv('MongoDB_password')}@{os.getenv('MongoDB_host')}:{os.getenv('MongoDB_port')}/")
+    collectioms = client[os.getenv('MongoDB_db')]['bodyinfo']
+    if name:
+        try:
+            target = collectioms.delete_one({"name":name})
+        except:
+            pass
+        return redirect('/bmi/')
