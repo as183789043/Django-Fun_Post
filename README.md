@@ -7,19 +7,19 @@
 
 
 ### Clone file
-```
+```bash
 git clone https://github.com/as183789043/Django-Fun_Post.git
 cd Django-Fun_Post
 pip install -r  requirements.txt
 ```
 ### Docker start MongoDB(Use for BMI Page )
-```
+```bash
 cd Docker-Compose-Qucik-Build
 cd mogo_and_express
 docker compose up -d   # UI port 8081
 ```
 ### Start Django
-```
+```bash
 cd fun_post
 python manage.py runserver  # URL: 127.0.0.1:8000
 ```
