@@ -15,7 +15,7 @@ pip install -r  requirements.txt
 ### Docker start MongoDB(Use for BMI Page )
 ```bash
 
-cd Docker-Compose-Qucik-Build (if not any file ，enter this command -> git clone https://github.com/as183789043/Docker-Compose-Qucik-Build.git)
+cd Docker-Compose-Qucik-Build (if not any file ，enter this command first -> git clone https://github.com/as183789043/Docker-Compose-Qucik-Build.git)
 cd mogo_and_express 
 docker compose up -d   # UI port 8081
 ```
